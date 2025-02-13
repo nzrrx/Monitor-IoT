@@ -1,0 +1,47 @@
+[System]
+Name='SKRIPSICODE'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='suhu'
+Range=[0 30]
+NumMFs=3
+MF1='dingin':'trapmf',[0 0 19 21]
+MF2='normal':'trapmf',[19 21 23 25]
+MF3='panas':'trapmf',[23 25 30 30]
+
+[Input2]
+Name='kelembaban'
+Range=[0 80]
+NumMFs=3
+MF1='kering':'trapmf',[0 0 40 45]
+MF2='lembab':'trapmf',[40 45 60 65]
+MF3='basah':'trapmf',[60 65 80 80]
+
+[Output1]
+Name='kipas'
+Range=[0 1023]
+NumMFs=3
+MF1='pelan':'trapmf',[0 0 256 384]
+MF2='sedang':'trapmf',[256 384 512 768]
+MF3='cepat':'trapmf',[512 768 1023 1023]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 1 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 1 (1) : 1
+3 1, 3 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
